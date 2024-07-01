@@ -1,5 +1,7 @@
 //npm init - y
 //npm install express
+//npm install nodemon -g
+//nodemon server.js
 
 //Incluindo o módulo Express na aplicação
 const express = require('express')
