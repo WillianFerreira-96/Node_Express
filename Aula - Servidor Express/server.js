@@ -24,9 +24,7 @@ app.get('/blog',(req, res)=>{
     res.send('Meu Blog')
 })
 
-//------------------------------------------------------------------------------------------------------------
 //Rota com parâmetro
-
 app.get('/descricao/:nome/:idade/:cargo',(req, res)=>{
     //Lembrete: A função send só pode ser chamada uma vez dentro do parametro de uma rota
     var txt_send = '<h1>Olá '+ req.params.nome +'</h1>'
@@ -36,7 +34,6 @@ app.get('/descricao/:nome/:idade/:cargo',(req, res)=>{
 })
 
 //------------------------------------------------------------------------------------------------------------
-
 //O app.listen deve ser a ultima linha do codigo
 const port = 3000
 app.listen(port, ()=>{
