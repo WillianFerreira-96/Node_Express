@@ -7,6 +7,8 @@
 const express = require('express')
 //Instanciando o express
 const app = express()
+//Middleware concede acesso ao objeto de solicitação-resposta
+app.use(express.urlencoded({extended: true}))
 
 //------------------------------------------------------------------------------------------------------------
 //Definição de Rotas
@@ -17,16 +19,14 @@ app.get('/',(req, res)=>{
     //__dirname é uma variavel do express que retorna o diretório da pasta raiz do projeto
 })
 
-//Rota Sobre
-app.get('/sobre',(req, res)=>{
-    res.sendFile(__dirname + "/MyProject/sobre.html")
-    //__dirname é uma variavel do express que retorna o diretório da pasta raiz do projeto
-})
-
-//Rota Blog
-app.get('/blog',(req, res)=>{
-    res.sendFile(__dirname + "/MyProject/blog.html")
-    //__dirname é uma variavel do express que retorna o diretório da pasta raiz do projeto
+//Rota POST
+app.post('/usuario',(req, res)=>{
+    //Essas variaveis se referem ao name (ex: name="form_nome") dado no input no html
+    var {form_nome, form_email, form_pass} = req.body
+    var txtRes = `<p>Seu nome é <strong>${form_nome}</strong></p>`
+    txtRes+= `<p>Email <strong>${form_email}</strong></p>`
+    txtRes+= `<p>E a senha cadastrada foi <strong>${form_pass}</strong></p>`
+    res.send(txtRes)
 })
 
 //------------------------------------------------------------------------------------------------------------
