@@ -3,8 +3,6 @@
 const express = require('express')
 //Instanciando o express
 const app = express()
-//Middleware concede acesso ao objeto de solicitação-resposta
-app.use(express.urlencoded({extended: true}))
 //Importar o drivers do Mysql
 const mysql = require('mysql2')
 
@@ -24,6 +22,10 @@ db.connect(()=>{
 
 //------------------------------------------------------------------------------------------------------------
 //Definição de Rotas
+
+
+//Middleware concede acesso ao objeto de solicitação-resposta
+app.use(express.urlencoded({extended: true}))
 
 //Rota Raiz
 app.get('/',(req, res)=>{
