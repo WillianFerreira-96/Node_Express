@@ -1,6 +1,3 @@
-//npm install --save sequelize
-//npm install --save mysql2
-
 const express = require('express')
 const app = express()
 

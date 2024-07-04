@@ -31,7 +31,7 @@ app.post('/usuario',(req, res)=>{
 
 //------------------------------------------------------------------------------------------------------------
 //O app.listen deve ser a ultima linha do codigo
-const port = 3000
+const port = 3003
 app.listen(port, ()=>{
     console.log(`O Servidor Express está rodando na porta http://localhost:${port}`)
 })
