@@ -18,13 +18,9 @@ const db = mysql.createConnection({
   });
 
 //Conectar ao banco de dados
-db.connect(err =>{
-    if(err){
-      console.error('Erro ao conectar ao banco de dados:', err);
-    }else{
-      console.log('Conectado ao banco de dados MySQL.');
-    }
-  })
+db.connect(()=>{
+    console.log('Banco de Dados MySQL Conectado ao Servidor')
+})
 
 //------------------------------------------------------------------------------------------------------------
 //Definição de Rotas
@@ -38,15 +34,18 @@ app.get('/',(req, res)=>{
 //Rota POST
 app.post('/usuario',(req, res)=>{
     //Essas variaveis se referem ao name (ex: name="form_nome") dado no input no html
-    var {form_nome, form_pass} = req.body
-    var txtRes = `<p>Seu nome é <strong>${form_nome}</strong></p>`
-    txtRes+= `<p>E a senha cadastrada foi <strong>${form_pass}</strong></p>`
-    res.send(txtRes)
+    var nome = req.body.form_nome
+    var senha = req.body.form_pass
+    
+    var sql = 'INSERT INTO usuario(nome, senha) VALUES(?, ?)'
+    db.query(sql, [nome, senha])
+
+    res.send('Dados Cadastrados com Sucesso')
 })
 
 //------------------------------------------------------------------------------------------------------------
 //O app.listen deve ser a ultima linha do codigo
-const port = 3003
+const port = 3006
 app.listen(port, ()=>{
-    console.log(`O Servidor Express está rodando na porta http://localhost:${port}`)
+    console.log(`Servidor está disponivel em: http://localhost:${port}`)
 })
