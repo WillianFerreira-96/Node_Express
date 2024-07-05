@@ -39,7 +39,7 @@ app.post('/usuario',(req, res)=>{
     var nome = req.body.form_nome
     var senha = req.body.form_pass
     
-    var sql = 'INSERT INTO usuario(nome, senha) VALUES(?, ?)'
+    var sql = 'INSERT INTO new_user(nome, senha) VALUES(?, ?)'
     db.query(sql, [nome, senha])
 
     res.send('Dados Cadastrados com Sucesso')
