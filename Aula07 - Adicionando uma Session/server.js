@@ -76,20 +76,24 @@ app.post('/consultar',(req, res)=>{
         const senha = usuario.senha
 
         //Organiza em JSON
-        const dados = {
+        /*const dados = {
             id,
             nome,
             senha
-        }
+        }*/
 
         //Mostra na tela o Objeto
-        res.send(dados)
+        req.session.id = id
+        req.session.nome = nome
+        req.session.senha = senha
+        console.log(`ID: ${req.session.id}, Nome: ${req.session.nome}, Senha: ${req.session.senha}`)
+        res.redirect('/usuario')
     })
 
     //encerrar session
-    req.session.destroy(() => {
+    /*req.session.destroy(() => {
         console.log('Sessão Finalizada!')
-    })
+    })*/
 })
 
 //------------------------------------------------------------------------------------------------------------
