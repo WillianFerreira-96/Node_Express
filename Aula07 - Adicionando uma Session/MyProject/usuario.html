@@ -7,10 +7,11 @@
 </head>
 <body>
     <h1>Consultar meus dados</h1>    
-    <div id="respost"></div>
-    <form action="/consultar" method="post">
-        <input type="submit" value="Consultar">
+    <div id="resposta"></div>
+    <form onsubmit="mostrar(); return false">
+        <input type="text" name="nomeSearch" placeholder="Nome" required>
+        <input id="btn" type="submit" value="Consultar">
     </form>
 </body>
-<script src="script.js"></script>
+<script src="/script"></script>
 </html>
