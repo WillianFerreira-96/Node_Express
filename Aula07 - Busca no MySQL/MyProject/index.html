@@ -8,8 +8,9 @@
 <body>
     <h1>Cadastro</h1>
     <form action="/cadastrar" method="post">
-        <input type="text" name="form_nome" placeholder="Nome" required><br>
-        <input type="password" name="form_pass" placeholder="Senha" required><br>
+        <input type="text" name="form_nome" placeholder="Nome" required minlength="3" maxlength="20"><br>
+        <input type="text" name="form_fone" value="(11)9."  required minlength="14" maxlength="15"><br>
+        <input type="email" name="form_emal" placeholder="E-Mail" required maxlength="40"><br>
         <input type="submit" value="Enviar">
     </form>      
 </body>

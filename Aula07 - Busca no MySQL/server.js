@@ -1,7 +1,8 @@
 //npm install express-session
 const express = require('express')
 const app = express()
-const mysql = require('mysql2')
+const mysql = require('mysql2');
+const { json } = require('sequelize');
 
 //------------------------------------------------------------------------------------------------------------
 //Configurar conexão com o Banco de dados
@@ -14,7 +15,7 @@ const db = mysql.createConnection({
 
 //Conectar ao banco de dados
 db.connect(()=>{
-    console.log('Banco de Dados MySQL Conectado ao Servidor')
+    console.log('Banco de Dados MySQL ('+ db.config.database +') Conectado ao Servidor')
 })
 
 //------------------------------------------------------------------------------------------------------------
@@ -37,41 +38,40 @@ app.get('/usuario', (req, res)=>{
 
 //Rota POST
 app.post('/cadastrar',(req, res)=>{
-
     //Requisição dos dados do Frontend
-    var nome = req.body.form_nome
-    var senha = req.body.form_pass 
+    const nome = req.body.form_nome
+    const fone = req.body.form_fone 
+    const email = req.body.form_emal 
     
     //Ação do banco de dados
-    var sql = 'INSERT INTO usuario(nome, senha) VALUES(?, ?)'
+    const sql = 'INSERT INTO usuarios_db (nome_db, telefone_db, email_db) VALUES(?, ?, ?)'
     //Conexão e execução do banco de dados
-    db.query(sql, [nome, senha])
+    db.query(sql, [nome, fone, email])
 
     //Redirecionar
     res.redirect('/usuario')    
 })
 
 //Rota Consultar
-app.get('/consultar',(req, res)=>{
-    const nomeConsult = req.body.nomeSearch
+app.post('/consultar', (req, res)=>{
+    //Requisição dos dados do Frontend
+    const nome = req.body.nomeProc
+
     //Ação do banco de dados
-    const sql = 'SELECT senha FROM usuario WHERE nome = ?'
+    const sql = 'SELECT * FROM usuarios_db WHERE nome_db = ?'
     //Conexão e execução do banco de dados
-    db.query(sql, [nomeConsult],(err, result)=>{
-        //Receber e separar os dados
-            
-        res.json(result)      
+    db.query(sql,[nome],(err, result)=>{
+        const usuario = result[0] 
+
+        //Enviar os dados de volta
+        res.json(usuario)
     })
 })
 
 
-   
-
-   
 app.get('/script', (req, res)=>{
     res.sendFile(__dirname + '/MyProject/script.js')
 })
-
 
 //------------------------------------------------------------------------------------------------------------
 const port = 3006
