@@ -40,13 +40,14 @@ app.get('/usuario', (req, res)=>{
 app.post('/cadastrar',(req, res)=>{
     //Requisição dos dados do Frontend
     const nome = req.body.form_nome
+    const status = req.body.form_status
     const fone = req.body.form_fone 
     const email = req.body.form_emal 
     
     //Ação do banco de dados
-    const sql = 'INSERT INTO usuarios_db (nome_db, telefone_db, email_db) VALUES(?, ?, ?)'
+    const sql = 'INSERT INTO usuarios_db (nome_db, status_db, telefone_db, email_db) VALUES(?, ?, ?, ?)'
     //Conexão e execução do banco de dados
-    db.query(sql, [nome, fone, email])
+    db.query(sql, [nome, status, fone, email])
 
     //Redirecionar
     res.redirect('/usuario')    
@@ -67,7 +68,6 @@ app.post('/consultar', (req, res)=>{
         res.json(usuario)
     })
 })
-
 
 app.get('/script', (req, res)=>{
     res.sendFile(__dirname + '/MyProject/script.js')

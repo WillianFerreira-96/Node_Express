@@ -16,21 +16,22 @@ form.addEventListener('submit', (event) => {
   })
   .then(response => {
     if (!response.ok) {
-      throw new Error('Erro ao buscar usuário.');
+      throw new Error('Erro ao buscar Criminoso(a).');
     }
     return response.json();
   })
   .then(data => {
     var txtResposta = ''
-        txtResposta += `<p>ID do Usuário: ${data.id_db}</p>`
-        txtResposta += `<p>Nome do Usuário: ${data.nome_db}</p>`
-        txtResposta += `<p>Telefone do Usuário: ${data.telefone_db}</p>`
-        txtResposta += `<p>E-mail do Usuário: ${data.email_db}</p>`
+        txtResposta += `<p name="busca_id">Código do Criminoso(a): ${data.id_db}</p>`
+        txtResposta += `<p name="busca_nome">Nome do(a) Meliante: ${data.nome_db}</p>`
+        txtResposta += `<p name="busca_status">Situação criminal: ${data.status_db}</p>`
+        txtResposta += `<p name="busca_fone">Telefone do Larápio(a): ${data.telefone_db}</p>`
+        txtResposta += `<p name="busca_email">E-mail do Infrator(a): ${data.email_db}</p>`
         resposta.innerHTML = txtResposta    
   })
   .catch(error => {
-    console.error('Erro ao buscar usuário:', error);
-    resposta.innerHTML = `<p>Erro ao buscar usuário. Verifique o console para mais detalhes.</p>`;
+    console.error('Erro ao buscar criminoso:', error);
+    resposta.innerHTML = `<p>Criminoso não encontrado. Nome Inválido.</p>`;
   });
 });
 

@@ -3,12 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cadastro</title>
+    <title>Registro Criminal</title>
 </head>
 <body>
-    <h1>Cadastro</h1>
+    <h1>Registro Criminal</h1>
+    <p>Cadastro de criminosos.</p>
     <form action="/cadastrar" method="post">
         <input type="text" name="form_nome" placeholder="Nome" required minlength="3" maxlength="20"><br>
+        <input list="status" placeholder="Situação..." name="form_status"><br>
+        <datalist id="status">
+            <option value="Sob Custódia">
+            <option value="Procurado(a)">
+            <option value="Preso(a)">
+        </datalist>
         <input type="text" name="form_fone" value="(11)9."  required minlength="14" maxlength="15"><br>
         <input type="email" name="form_emal" placeholder="E-Mail" required maxlength="40"><br>
         <input type="submit" value="Enviar">
