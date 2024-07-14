@@ -9,15 +9,15 @@ header{
     width: 100vw;
     height: 10vh;
     box-shadow: 1px 1px 15px black;
-    margin-bottom: 5vh;
     display: flex;
-    justify-content: space-around;
+    justify-content: end;
     align-items: center;
 }
 
 header a{
     text-decoration:none;
     color: rgb(114, 114, 114);    
+    margin-right: 50px;    
 }
 
 header a:hover{
@@ -31,6 +31,20 @@ input[type="submit"]{
     height: 3vh;
     font-weight: bold;
 }
+
+input{
+    margin: 3px;
+}
+
+#container{
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
 
 #edit_delet{
     display: none;
