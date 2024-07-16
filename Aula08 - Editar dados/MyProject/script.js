@@ -30,9 +30,26 @@ form.addEventListener('submit', (event) => {
         resposta.innerHTML = txtResposta
         document.getElementById('edit_delet').style.display="inline-block"
         
-        
-        addEventListener('submit',(event)=>{
+        const btn_editar = document.getElementById('btn_editar')
+        const div_editar = document.getElementById('div_editar')
+        const form_editar = document.getElementById('form_editar')
+
+        btn_editar.addEventListener('click',(event)=>{
           event.preventDefault()
+          var htmlEditar = ""
+          htmlEditar+=`<form action="/editar" method="post" id="form_editar">`           
+            htmlEditar+=`<input list="lista_editar" name="input_list" placeholder="Editar..." required><br>`
+              htmlEditar+=`<datalist id="lista_editar">`
+                htmlEditar+=`<option value="Nome">`
+                htmlEditar+=`<option value="Situação">`
+                htmlEditar+=`<option value="Telefone">`
+                htmlEditar+=`<option value="E-Mail">`
+              htmlEditar+=`</datalist>`
+            htmlEditar+=`<input type="text" name="update" placeholder="Atualização..." required><br>`
+            htmlEditar+=`<input style="display: none;" type="text" name="id_inclued" value="${data.id_db}"><br>`
+            htmlEditar+=`<input value="Salvar" type="submit">`
+          htmlEditar+=`</form>`
+          div_editar.innerHTML = htmlEditar
         })
   })
   .catch(error => {

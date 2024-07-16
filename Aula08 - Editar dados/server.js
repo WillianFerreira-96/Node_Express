@@ -69,6 +69,23 @@ app.post('/consultar', (req, res)=>{
 })
 
 app.post('/editar',(req, res)=>{
+    const id = req.body.id_inclued
+    var coluna = req.body.input_list
+    const update = req.body.update
+    if(coluna === "Nome"){
+        coluna = "nome_db"
+    }else if (coluna === "Situação") {
+        coluna = "status_db"
+    }else if(coluna === "Telefone"){
+        coluna = "telefone_db"
+    }else{
+        coluna = "email_db"
+    }        
+    console.log(coluna)
+    console.log(update)
+    console.log(id)
+    const sql = `UPDATE usuarios_db SET ${coluna} = ? WHERE id_db = ?`
+    db.query(sql,[update, id])
 })
 
 
