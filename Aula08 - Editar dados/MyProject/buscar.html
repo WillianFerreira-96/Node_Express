@@ -20,11 +20,16 @@
         </form> 
         <div id="edit_delet">
             <input id="btn_editar" type="submit" value="Editar">
-            <input type="submit" value="Deletar">
-            <div id="div_editar">
-                
-            </div>
+            <input id="btn_deletar" type="submit" value="Deletar">
+            <div id="div_editar"></div>
         </div> 
+        <div id="sim_nao">
+            <form action="/deletar" method="post">
+                <input type="text" name="confirm" placeholder="Confirme o nome..." required><br>
+                <input type="submit" value="Sim">         
+                <a href="/buscar"><input type="button" value="Não"></a>
+            </form>               
+        </div>
     </div>    
 </body>
 <script src="/script"></script>

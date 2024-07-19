@@ -27,7 +27,7 @@ header a:hover{
     transition-duration: .7s;
 }
 
-input[type="submit"]{
+input[type="submit"], input[type="button"]{
     width: 9vw;
     height: 4vh;
     font-weight: bold;
@@ -47,7 +47,7 @@ input{
 }
 
 
-#edit_delet{
+#edit_delet, #sim_nao{
     display: none;
 }
 

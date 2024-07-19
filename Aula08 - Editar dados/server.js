@@ -68,6 +68,13 @@ app.post('/consultar', (req, res)=>{
     })
 })
 
+app.post('/deletar',(req, res)=>{
+    const nome = req.body.confirm
+    const sql = 'DELETE FROM usuarios_db WHERE nome_db = ?'
+    db.query(sql, [nome])
+    res.redirect('/')
+})
+
 app.post('/editar',(req, res)=>{
     const id = req.body.id_inclued
     var coluna = req.body.input_list
@@ -80,10 +87,8 @@ app.post('/editar',(req, res)=>{
         coluna = "telefone_db"
     }else{
         coluna = "email_db"
-    }        
-    console.log(coluna)
-    console.log(update)
-    console.log(id)
+    }
+    
     const sql = `UPDATE usuarios_db SET ${coluna} = ? WHERE id_db = ?`
     db.query(sql,[update, id])
 })

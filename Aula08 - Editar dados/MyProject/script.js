@@ -12,7 +12,7 @@ form.addEventListener('submit', (event) => {
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ nomeProc })
+    body: JSON.stringify({nomeProc})
   })
   .then(response => {
     if (!response.ok) {
@@ -32,7 +32,6 @@ form.addEventListener('submit', (event) => {
         
         const btn_editar = document.getElementById('btn_editar')
         const div_editar = document.getElementById('div_editar')
-        const form_editar = document.getElementById('form_editar')
 
         btn_editar.addEventListener('click',(event)=>{
           event.preventDefault()
@@ -50,6 +49,17 @@ form.addEventListener('submit', (event) => {
             htmlEditar+=`<input value="Salvar" type="submit">`
           htmlEditar+=`</form>`
           div_editar.innerHTML = htmlEditar
+        })
+
+        const btn_deletar = document.getElementById("btn_deletar")
+        btn_deletar.addEventListener('click',(event)=>{
+          event.preventDefault()          
+          resposta.innerText=""
+          form.innerText=""
+          document.getElementById('edit_delet').innerText=""
+          resposta.innerHTML = "<h3 style='font-size:1.3rem;'>Tem Certeza que Deseja Excluir</h3>"
+          resposta.innerHTML += `<h4 style='font-size:1rem; text-align: center;'>os dados de: ${data.nome_db}?</h4>`
+          document.getElementById('sim_nao').style.display="inline-block"
         })
   })
   .catch(error => {
